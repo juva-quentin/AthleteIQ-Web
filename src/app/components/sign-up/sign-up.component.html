@@ -1,55 +1,37 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign Up</h3>
-
-      <div class="formGroup">
+<section class="container">
+  <div class="login-container">
+    <div class="circle circle-one"></div>
+    <div class="form-container">
+      <img src="/assets/image/logo.png" alt="illustration" class="illustration" />
+      <h1 class="opacity">INSCRIPTION</h1>
+      <form>
         <input
-          type="email"
+          type="text"
           class="formControl"
-          placeholder="Email Address"
+          placeholder="Email"
           #userEmail
           required
         />
-      </div>
-
-      <div class="formGroup">
         <input
           type="password"
           class="formControl"
-          placeholder="Password"
+          placeholder="Mot de passe"
           #userPwd
           required
         />
-      </div>
-
-      <div class="formGroup">
         <select class="formControl" #userSex required>
-          <option value="" disabled selected>Select your sex</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
+          <option value="" disabled selected>Genre</option>
+          <option value="Male">Homme</option>
+          <option value="Female">Femme</option>
         </select>
+        <button class="opacity" (click)="authService.SignUp(userEmail.value, userPwd.value, userSex.value)">VALIDER</button>
+      </form>
+      <div class="register-forget opacity">
+        <a routerLink="/sign-in">Connexion</a>
+        <a routerLink="/forgot-password">Mot de passe oublié</a>
       </div>
-
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Sign Up"
-          (click)="authService.SignUp(userEmail.value, userPwd.value, userSex.value)"
-        />
-      </div>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
-    <div class="redirectToLogin">
-      <span
-        >Already have an account?
-        <span class="redirect" routerLink="/sign-in">Log In</span></span
-      >
     </div>
+    <div class="circle circle-two"></div>
   </div>
-</div>
+  <div class="theme-btn-container"></div>
+</section>

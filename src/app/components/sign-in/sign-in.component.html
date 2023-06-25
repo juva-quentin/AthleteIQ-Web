@@ -1,55 +1,32 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
+<section class="container">
+  <div class="login-container">
+    <div class="circle circle-one"></div>
+    <div class="form-container">
+      <img src="/assets/image/logo.png" alt="illustration" class="illustration" />
+      <h1 class="opacity">CONNEXION</h1>
+      <form>
         <input
           type="text"
           class="formControl"
-          placeholder="Username"
-          #userName
+          placeholder="Email"
+          #email
           required
         />
-      </div>
-
-      <div class="formGroup">
         <input
           type="password"
           class="formControl"
-          placeholder="Password"
+          placeholder="Mot de passe"
           #userPassword
           required
         />
-      </div>
-
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Log in"
-          (click)="authService.SignIn(userName.value, userPassword.value)"
-        />
-      </div>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
+        <button class="opacity" (click)="authService.SignIn(email.value, userPassword.value)">Connexion</button>
+      </form>
+      <div class="register-forget opacity">
+        <a routerLink="/register-user">Inscription</a>
+        <a routerLink="/forgot-password">Motde passe oublié</a>
       </div>
     </div>
-
-    <div class="redirectToLogin">
-      <span
-        >Don't have an account?<span
-          class="redirect"
-          routerLink="/register-user"
-        >
-          Sign Up</span
-        ></span
-      >
-    </div>
+    <div class="circle circle-two"></div>
   </div>
-</div>
+  <div class="theme-btn-container"></div>
+</section>

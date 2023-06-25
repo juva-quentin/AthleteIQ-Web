@@ -1,7 +1,19 @@
 body{
-  background:#ffea92;
+  background: #1a1a2e;
   margin:0;
   font-family:"Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
-  color:#fff;
+  color:#ffffff;
   padding-left:240px;
+}
+@media screen and (max-width:900px) and (min-width:400px){
+  body{
+    padding-left:90px;
+  }
+}
+
+@media screen and (max-width:400px){
+  body{
+    padding-left:0;
+  }
+
 }

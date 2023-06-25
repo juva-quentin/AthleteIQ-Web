@@ -6,9 +6,8 @@
   </header>
   <ul>
     <li routerLinkActive="active-link" tabindex="0" class="icon-dashboard"><a routerLink="/dashboard"><span>Dashboard</span></a></li>
-    <li tabindex="0" class="icon-customers"><a ><span>Customers</span></a></li>
-    <li tabindex="0" class="icon-users"><a ><span>Users</span></a></li>
+    <li tabindex="0" class="icon-customers"><a ><span>Mes parcours</span></a></li>
     <li tabindex="0" class="icon-settings"><a><span>Settings</span></a></li>
   </ul>
-  <button class="logout-button">Déconnexion</button>
+  <button class="logout-button" (click)="logout()">Déconnexion</button>
 </nav>
