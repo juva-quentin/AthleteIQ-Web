@@ -1,0 +1,16 @@
+main{
+  position:relative;
+  height:100vh;
+}
+@media screen and (max-width:900px) and (min-width:400px){
+  body{
+    padding-left:90px;
+  }
+}
+
+@media screen and (max-width:400px){
+  body{
+    padding-left:0;
+  }
+
+}
