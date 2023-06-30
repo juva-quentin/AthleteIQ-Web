@@ -82,9 +82,7 @@ export class AuthService {
   }
 
 
-  /* Configuration des données de l'utilisateur lors de la connexion avec nom d'utilisateur/mot de passe,
-  l'inscription avec nom d'utilisateur/mot de passe et la connexion avec une authentification sociale
-  en utilisant AngularFirestore + AngularFirestoreDocument */
+
   SetUserData(user: any, sex: string) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
@@ -110,9 +108,6 @@ export class AuthService {
 
   // Déconnexion
   SignOut() {
-    return this.afAuth.signOut().then(() => {
-      this.token = null
-      this.router.navigate(['sign-in']);
-    });
+    return this.afAuth.signOut()
   }
 }

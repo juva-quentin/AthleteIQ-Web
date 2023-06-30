@@ -5,6 +5,7 @@ import {AbstractControl, NonNullableFormBuilder, Validators} from "@angular/form
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {LoginRequest} from "../../shared/models/authentication/login-request";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -34,7 +35,8 @@ export class SignInComponent implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthService,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnDestroy(): void {
@@ -43,7 +45,7 @@ export class SignInComponent implements OnDestroy {
   }
 
   private errorHandler(errorResponse: HttpErrorResponse): void {
-    this.errorMessage = errorResponse.error.error ?? `${errorResponse.error.status} - ${errorResponse.error.statusText}`
+    this.errorMessage =  `${errorResponse.message}`
   }
 
   login(): void {
@@ -54,6 +56,14 @@ export class SignInComponent implements OnDestroy {
         next: response => {
           response.user?.getIdToken().then(
             (res)=>{
+              const userId = response.user?.uid;
+              if (userId) {
+                this.userService.getUserById(userId).subscribe(user => {
+                  if (user) {
+                    this.userService.setCurrentUser(user);
+                  }
+                });
+              }
               this.authenticationService.token = res
               this.router.navigateByUrl('/')
             }
@@ -63,7 +73,7 @@ export class SignInComponent implements OnDestroy {
         },
         error: errorResponse => {
           console.log(typeof errorResponse)
-          this.errorHandler(errorResponse.typ)
+          this.errorHandler(errorResponse)
         }
       })
   }

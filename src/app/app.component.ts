@@ -11,7 +11,6 @@ export class AppComponent {
 
   constructor(private auth: AuthService) {
   }
-
   get isConnect(){
     return this.auth.loggedIn
   }

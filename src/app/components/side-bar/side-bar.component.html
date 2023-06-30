@@ -1,8 +1,8 @@
 <nav class="menu" tabindex="0">
   <div class="smartphone-menu-trigger"></div>
   <header class="avatar">
-    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
-    <h2>John D.</h2>
+    <img [src]="currentUser?.image" alt="image de profile"/>
+    <h2>{{currentUser?.pseudo}}</h2>
   </header>
   <ul>
     <li routerLinkActive="active-link" tabindex="0" class="icon-dashboard"><a routerLink="/dashboard"><span>Dashboard</span></a></li>

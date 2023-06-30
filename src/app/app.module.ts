@@ -24,6 +24,7 @@ import { AuthService } from './shared/services/auth.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgOptimizedImage} from "@angular/common";
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     AngularFireDatabaseModule,
     AppRoutingModule,
     GoogleMapsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

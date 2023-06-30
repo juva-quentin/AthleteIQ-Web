@@ -5,26 +5,15 @@
       <img src="/assets/image/logo.png" alt="illustration" class="illustration" />
       <h1 class="opacity">CONNEXION</h1>
       <form (ngSubmit)="login()" [formGroup]="authForm">
-        <input
-          type="text"
-          class="formControl"
-          placeholder="Email"
-          formControlName="email"
-          required
-        />
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Mot de passe"
-          formControlName="password"
-          required
-        />
+        <input type="text" class="formControl" placeholder="Email" formControlName="email" required />
+        <input type="password" class="formControl" placeholder="Mot de passe" formControlName="password" required />
         <button class="opacity">Connexion</button>
       </form>
       <div class="register-forget opacity">
         <a routerLink="/register-user">Inscription</a>
-        <a routerLink="/forgot-password">Motde passe oublié</a>
+        <a routerLink="/forgot-password">Mot de passe oublié</a>
       </div>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
     <div class="circle circle-two"></div>
   </div>
