@@ -5,7 +5,9 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import {User} from "./user";
+import {User} from "../models/user";
+import {LoginRequest} from "../models/authentication/login-request";
+import {from} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -19,32 +21,30 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone // Service NgZone pour supprimer l'avertissement hors de la portée externe
   ) {
-    /* Sauvegarde les données de l'utilisateur dans le stockage local lorsque
-    connecté et les définit sur null lors de la déconnexion */
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-      } else {
-        localStorage.setItem('user', 'null');
-      }
-    });
+
+  }
+
+  private tokenKey = 'user'
+
+  get loggedIn(): boolean {
+    return this.token != null
+  }
+  get token(): string | null {
+    return localStorage.getItem(this.tokenKey)
+  }
+
+  set token(value: string | null) {
+    if (value) {
+      localStorage.setItem(this.tokenKey, value)
+    } else {
+      localStorage.removeItem(this.tokenKey)
+    }
   }
 
   // Connexion avec email/mot de passe
-  SignIn(email: string, password: string) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.afAuth.authState.subscribe((user) => {
-          if (user) {
-            this.router.navigate(['dashboard']);
-          }
-        });
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  SignIn(loginRequest: LoginRequest) {
+    return from(this.afAuth
+      .signInWithEmailAndPassword(loginRequest.email, loginRequest.password))
   }
 
   // Inscription avec email/mot de passe
@@ -81,12 +81,6 @@ export class AuthService {
       });
   }
 
-  // Renvoie true lorsque l'utilisateur est connecté et que son email est vérifié
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false;
-  }
-
 
   /* Configuration des données de l'utilisateur lors de la connexion avec nom d'utilisateur/mot de passe,
   l'inscription avec nom d'utilisateur/mot de passe et la connexion avec une authentification sociale
@@ -117,7 +111,7 @@ export class AuthService {
   // Déconnexion
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      this.token = null
       this.router.navigate(['sign-in']);
     });
   }

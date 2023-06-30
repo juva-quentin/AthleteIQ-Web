@@ -14,7 +14,6 @@ export class SideBarComponent implements OnInit {
   }
 
   logout(){
-    console.log("ok")
     this.auth.SignOut()
   }
 

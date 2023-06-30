@@ -4,22 +4,22 @@
     <div class="form-container">
       <img src="/assets/image/logo.png" alt="illustration" class="illustration" />
       <h1 class="opacity">CONNEXION</h1>
-      <form>
+      <form (ngSubmit)="login()" [formGroup]="authForm">
         <input
           type="text"
           class="formControl"
           placeholder="Email"
-          #email
+          formControlName="email"
           required
         />
         <input
           type="password"
           class="formControl"
           placeholder="Mot de passe"
-          #userPassword
+          formControlName="password"
           required
         />
-        <button class="opacity" (click)="authService.SignIn(email.value, userPassword.value)">Connexion</button>
+        <button class="opacity">Connexion</button>
       </form>
       <div class="register-forget opacity">
         <a routerLink="/register-user">Inscription</a>

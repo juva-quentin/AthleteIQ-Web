@@ -13,6 +13,6 @@ export class AppComponent {
   }
 
   get isConnect(){
-    return this.auth.isLoggedIn
+    return this.auth.loggedIn
   }
 }

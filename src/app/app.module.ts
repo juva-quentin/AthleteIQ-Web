@@ -23,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import {GoogleMapsModule} from "@angular/google-maps";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {GoogleMapsModule} from "@angular/google-maps";
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
