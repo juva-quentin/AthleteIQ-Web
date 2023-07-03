@@ -10,7 +10,7 @@
               [position]="getMarker(parcour)"
               (mapClick)="openInfoWindow(marker, i)"
   >
-    <map-info-window>{{parcour.title}}</map-info-window>
+    <map-info-window>{{parcour.title | titlecase}} <br> {{parcour.createdAt.toDate() | date:'yyyy/MM/dd'}} <br> {{parcour.totalDistance | number }}Km</map-info-window>
   </map-marker>
 
 </google-map>
