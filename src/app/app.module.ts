@@ -47,7 +47,7 @@ import {NgOptimizedImage} from "@angular/common";
     AppRoutingModule,
     GoogleMapsModule,
     ReactiveFormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

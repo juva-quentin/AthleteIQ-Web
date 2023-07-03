@@ -1,7 +1,16 @@
-<google-map height="100%"
+<google-map
+            height="100%"
             width="100%"
             [center]="center"
             [zoom]="zoom"
             (mapClick)="moveMap($event)"
             (mapMousemove)="move($event)">
+  <map-polyline [options]="getAllPoints(parcour)" *ngFor="let parcour of listParcours" ></map-polyline>
+  <map-marker #marker="mapMarker" *ngFor="let parcour of listParcours; let i = index"
+              [position]="getMarker(parcour)"
+              (mapClick)="openInfoWindow(marker, i)"
+  >
+    <map-info-window>{{parcour.title}}</map-info-window>
+  </map-marker>
+
 </google-map>
