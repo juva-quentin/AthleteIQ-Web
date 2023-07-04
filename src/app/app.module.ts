@@ -23,8 +23,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import {GoogleMapsModule} from "@angular/google-maps";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgOptimizedImage} from "@angular/common";
+import { ParcourListComponent } from './components/parcour-list/parcour-list.component';
+import {UserService} from "./shared/services/user.service";
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import {NgOptimizedImage} from "@angular/common";
     ForgotPasswordComponent,
     VerifyEmailComponent,
     SideBarComponent,
+    ParcourListComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +51,9 @@ import {NgOptimizedImage} from "@angular/common";
     GoogleMapsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
+    FormsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

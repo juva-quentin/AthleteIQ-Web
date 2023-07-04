@@ -29,7 +29,13 @@ export class ParcoursService {
 
 
   getAllParcours(): Observable<Parcour[]> {
-    return this.parcoursCollection.valueChanges();
+    return from( this.parcoursCollection.ref
+      .get()
+  ).pipe(
+      map((querySnapshot) =>
+        querySnapshot.docs.map((doc) => ({ id: doc.id,...doc.data() as Parcour }))
+      )
+    );
   }
 
   getParcoursByOwner(ownerId: string): Observable<Parcour[]> {
@@ -40,7 +46,7 @@ export class ParcoursService {
         .get()
     ).pipe(
       map((querySnapshot) =>
-        querySnapshot.docs.map((doc) => ({ ...doc.data() as Parcour }))
+        querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() as Parcour }))
       )
     );
   }
@@ -66,7 +72,7 @@ export class ParcoursService {
     return this.parcoursCollection.doc(id).update(parcour);
   }
 
-  deleteParcour(id: string): Promise<void> {
+  deleteParcour(id: string | undefined): Promise<void> {
     return this.parcoursCollection.doc(id).delete();
   }
 }

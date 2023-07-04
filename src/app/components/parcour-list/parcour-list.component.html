@@ -1,0 +1,35 @@
+<div class="app-content">
+  <div class="app-content-header">
+    <h1 class="app-content-headerText">Mes Parcours</h1>
+  </div>
+  <div class="app-content-actions">
+    <input class="search-bar" placeholder="Search..." type="text">
+  </div>
+  <div class="parcours-area-wrapper tableView">
+    <div class="parcours-header">
+      <div class="parcour-cell image">
+        Titre
+        <button class="sort-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"/></svg>
+        </button>
+      </div>
+      <div class="parcour-cell titre">Description</div>
+      <div class="parcour-cell status-cell">Temps</div>
+      <div class="parcour-cell distance">Distance</div>
+      <div class="parcour-cell price">Type</div>
+      <div class="parcour-cell actions">Actions</div>
+    </div>
+    <div class="parcours-row" *ngFor="let parcour of listParcours; let i = index">
+      <div class="parcour-cell titre">{{parcour.title}}</div>
+      <div class="parcour-cell description">{{parcour.description =="" ? "Aucune description": parcour.description}}</div>
+      <div class="parcour-cell temp">{{parcour.timer.hours}}H-{{parcour.timer.minutes}}m-{{parcour.timer.seconds}}s</div>
+      <div class="parcour-cell distance">{{parcour.totalDistance | number}}Km</div>
+      <div class="parcour-cell status-cell">
+        <span class="status active">{{parcour.type}}</span>
+      </div>
+      <div class="parcour-cell actions">
+        <i (click)="confirmDelete(parcour)" class="material-icons" style="cursor: pointer;">delete</i>
+      </div>
+    </div>
+  </div>
+</div>

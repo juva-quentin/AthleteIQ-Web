@@ -58,7 +58,7 @@ export class SignInComponent implements OnDestroy {
             (res)=>{
               const userId = response.user?.uid;
               if (userId) {
-                this.userService.getUserById(userId).subscribe(user => {
+                this.userService.getUserById(userId).pipe(takeUntil(this.unsubsribe)).subscribe(user => {
                   if (user) {
                     this.userService.setCurrentUser(user);
                   }

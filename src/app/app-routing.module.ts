@@ -8,11 +8,14 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 
 // route guard
 import { AuthGuard } from './shared/guard/auth.guard';
+import {ParcoursService} from "./shared/services/parcour.service";
+import {ParcourListComponent} from "./components/parcour-list/parcour-list.component";
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'parcour-list', component: ParcourListComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

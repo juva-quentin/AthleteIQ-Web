@@ -5,9 +5,9 @@
     <h2>{{currentUser?.pseudo}}</h2>
   </header>
   <ul>
-    <li routerLinkActive="active-link" tabindex="0" class="icon-dashboard"><a routerLink="/dashboard"><span>Dashboard</span></a></li>
-    <li tabindex="0" class="icon-customers"><a ><span>Mes parcours</span></a></li>
-    <li tabindex="0" class="icon-settings"><a><span>Settings</span></a></li>
+    <li routerLinkActive="active-link" tabindex="0" class="icon-dashboard"><a routerLink="/dashboard"><span>Accueil</span></a></li>
+    <li routerLinkActive="active-link" tabindex="0" class="icon-customers"><a routerLink="/parcour-list"><span>Mes parcours</span></a></li>
+    <li tabindex="0" class="icon-settings"><a><span>Paramètres</span></a></li>
   </ul>
   <button class="logout-button" (click)="logout()">Déconnexion</button>
 </nav>
