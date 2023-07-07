@@ -1,27 +1,45 @@
-# AthleteIQWeb
+# AthleteIQ Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Bienvenue sur le projet AthleteIQ Web ! Ce projet est une application web basée sur Angular, conçue pour compléter l'application mobile AthleteIQ. Il fournit un tableau de bord pour visualiser différentes informations sur les parcours réalisés par les utilisateurs de l'application mobile.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Avant de lancer l'application AthleteIQ Web, assurez-vous de suivre ces étapes :
 
-## Code scaffolding
+### Prérequis
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Installez Node.js en suivant les instructions officielles : [Guide d'installation de Node.js](https://nodejs.org)
 
-## Build
+### Procédure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clonez le référentiel AthleteIQ Web :
 
-## Running unit tests
+```bash
+git clone https://github.com/juva-quentin/AthleteIQ-Web.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Accédez au répertoire du projet :
 
-## Running end-to-end tests
+```bash
+cd AthleteIQ-Web
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Installez les dépendances :
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Lancez l'application AthleteIQ Web en mode développement :
+
+```bash
+npm start
+```
+
+L'application sera disponible à l'adresse [http://localhost:4200](http://localhost:4200). Assurez-vous que l'API de l'application mobile AthleteIQ est accessible et que les URL de l'API sont correctement configurées dans le code.
+
+## Contact
+
+Si vous avez des questions, des commentaires ou des préoccupations, n'hésitez pas à contacter l'équipe de développement à l'adresse suivante : 
+celian.frasca@ynov.com
+quentin.juvet@ynov.com
