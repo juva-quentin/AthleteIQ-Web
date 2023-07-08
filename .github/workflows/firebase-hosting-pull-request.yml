@@ -14,3 +14,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ATHLETEIQ_2F163 }}'
           projectId: athleteiq-2f163
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks

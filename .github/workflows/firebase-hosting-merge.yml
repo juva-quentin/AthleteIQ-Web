@@ -17,3 +17,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ATHLETEIQ_2F163 }}'
           channelId: live
           projectId: athleteiq-2f163
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
