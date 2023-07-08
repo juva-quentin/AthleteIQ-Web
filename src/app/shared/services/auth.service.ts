@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {User} from "../models/user";
 import {LoginRequest} from "../models/authentication/login-request";
 import {from} from "rxjs";
+import {SignUpRequest} from "../models/authentication/sign-up-request";
 
 @Injectable({
   providedIn: 'root',
@@ -48,12 +49,12 @@ export class AuthService {
   }
 
   // Inscription avec email/mot de passe
-  SignUp(email: string, password: string, sex: string) {
+  SignUp(signUpRequest: SignUpRequest): Promise<any>{
     return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(signUpRequest.email, signUpRequest.password)
       .then((result) => {
         this.SendVerificationMail();
-        this.SetUserData(result.user, sex);
+        this.SetUserData(result.user, signUpRequest.sex, signUpRequest.pseudo);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -83,14 +84,16 @@ export class AuthService {
 
 
 
-  SetUserData(user: any, sex: string) {
+  SetUserData(user: any, sex: string, pseudo: string) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: User = {
       id: user.uid,
-      pseudo: user.displayName,
-      image: user.photoURL,
+      pseudo: pseudo,
+      image: sex == 'Homme'
+        ? "https://cdn-icons-png.flaticon.com/512/4139/4139981.png"
+        : "https://cdn-icons-png.flaticon.com/512/219/219969.png",
       email: user.email,
       friends: [],
       awaitFriends: [],

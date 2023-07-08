@@ -4,27 +4,31 @@
     <div class="form-container">
       <img src="/assets/image/logo.png" alt="illustration" class="illustration" />
       <h1 class="opacity">INSCRIPTION</h1>
-      <form>
+      <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+        <input
+          type="text"
+          class="formControl"
+          placeholder="Pseudo"
+          formControlName="pseudo"
+        />
         <input
           type="text"
           class="formControl"
           placeholder="Email"
-          #userEmail
-          required
+          formControlName="email"
         />
         <input
           type="password"
           class="formControl"
           placeholder="Mot de passe"
-          #userPwd
-          required
+          formControlName="password"
         />
-        <select class="formControl" #userSex required>
+        <select class="formControl" formControlName="sex">
           <option value="" disabled selected>Genre</option>
           <option value="Male">Homme</option>
           <option value="Female">Femme</option>
         </select>
-        <button class="opacity" (click)="authService.SignUp(userEmail.value, userPwd.value, userSex.value)">VALIDER</button>
+        <button class="opacity" type="submit">VALIDER</button>
       </form>
       <div class="register-forget opacity">
         <a routerLink="/sign-in">Connexion</a>
