@@ -58,28 +58,24 @@ export class SignInComponent implements OnDestroy {
             (res)=>{
               const userId = response.user?.uid;
               if (userId) {
+                console.log("userId", userId)
                 this.userService.getUserById(userId).pipe(takeUntil(this.unsubsribe)).subscribe(user => {
-                  if (user) {
-                    this.userService.setCurrentUser(user);
+                  if (user.length > 0) {
+                    this.userService.setCurrentUser(user[0]);
+                    this.authenticationService.token = res
+                    this.router.navigateByUrl('/')
                   }
                 });
               }
-              this.authenticationService.token = res
-              this.router.navigateByUrl('/')
             }
           )
 
-         this.redirect()
         },
         error: errorResponse => {
           console.log(typeof errorResponse)
           this.errorHandler(errorResponse)
         }
       })
-  }
-
-  redirect(): void{
-    setTimeout(()=>{ this.router.navigateByUrl('/') } , 1000)
   }
 
 

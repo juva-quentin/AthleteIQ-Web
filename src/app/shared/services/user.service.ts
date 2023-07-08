@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {User} from "../models/user";
 import {map, Observable} from "rxjs";
+import {equalTo} from "@angular/fire/database";
 
 @Injectable({
   providedIn: 'root'
@@ -28,19 +29,18 @@ export class UserService {
     return this.usersCollection.doc(id).delete();
   }
 
-  getUserById(id: string): Observable<User | undefined> {
-    return this.usersCollection.doc<User>(id)
+  getUserById(id: string): Observable<User[]> {
+    return this.firestore.collection<User>('users', (ref)=> ref.where("id", '==', id ))
       .snapshotChanges()
       .pipe(
-        map((snapshot) => {
-          if (snapshot.payload.exists) {
-            const data = snapshot.payload.data() as User;
-            return { ...data };
-          } else {
-            return undefined;
-          }
+        map((actions)=> {
+          return actions.map((item)=> {
+            return {
+              ...item.payload.doc.data(),
+            } as User
+          })
         })
-      );
+      )
   }
 
 

@@ -3,7 +3,7 @@
     <h1 class="app-content-headerText">Mes Parcours</h1>
   </div>
   <div class="app-content-actions">
-    <input class="search-bar" placeholder="Search..." type="text">
+    <input class="search-bar" placeholder="Recherche..." type="text" [(ngModel)]="searchTerm" (input)="filterParcours()">
   </div>
   <div class="parcours-area-wrapper tableView">
     <div class="parcours-header">
@@ -19,17 +19,23 @@
       <div class="parcour-cell price">Type</div>
       <div class="parcour-cell actions">Actions</div>
     </div>
-    <div class="parcours-row" *ngFor="let parcour of listParcours; let i = index">
-      <div class="parcour-cell titre">{{parcour.title}}</div>
-      <div class="parcour-cell description">{{parcour.description =="" ? "Aucune description": parcour.description}}</div>
-      <div class="parcour-cell temp">{{parcour.timer.hours}}H-{{parcour.timer.minutes}}m-{{parcour.timer.seconds}}s</div>
-      <div class="parcour-cell distance">{{parcour.totalDistance | number}}Km</div>
-      <div class="parcour-cell status-cell">
-        <span class="status active">{{parcour.type}}</span>
+    <ng-container *ngIf="filteredParcours.length > 0; else noParcoursBlock">
+      <div class="parcours-row"  *ngFor="let parcour of filteredParcours; let i = index">
+        <div class="parcour-cell titre">{{parcour.title}}</div>
+        <div class="parcour-cell description">{{parcour.description =="" ? "Aucune description": parcour.description}}</div>
+        <div class="parcour-cell temp">{{parcour.timer.hours}}H-{{parcour.timer.minutes}}m-{{parcour.timer.seconds}}s</div>
+        <div class="parcour-cell distance">{{parcour.totalDistance | number}}Km</div>
+        <div class="parcour-cell status-cell">
+          <span class="status active">{{parcour.type}}</span>
+        </div>
+        <div class="parcour-cell actions">
+          <i (click)="confirmDelete(parcour)" class="material-icons" style="cursor: pointer;">delete</i>
+        </div>
       </div>
-      <div class="parcour-cell actions">
-        <i (click)="confirmDelete(parcour)" class="material-icons" style="cursor: pointer;">delete</i>
-      </div>
-    </div>
+    </ng-container>
+    <ng-template #noParcoursBlock>
+      <h2 class="text-center" *ngIf="searchTerm !== ''">Aucun parcours trouvé</h2>
+      <h2 class="text-center" *ngIf="searchTerm === ''">Vous n'avez pas encore de parcours</h2>
+    </ng-template>
   </div>
 </div>

@@ -36,8 +36,12 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
     this.setMapTocurrentLocation().then(() =>
       this.parcourService.getAllParcours().pipe(
         takeUntil(this.unsubsribe),
-        map(parcours => parcours.filter(parcour => parcour.owner === this.userService.getCurrentUser()?.id ||
-          parcour.shareTo.includes(this.userService.getCurrentUser()!.id)))
+        map(parcours => {
+            console.log(parcours)
+            return parcours.filter(parcour => parcour.owner === this.userService.getCurrentUser()?.id ||
+            parcour.shareTo.includes(this.userService.getCurrentUser()!.id))
+          }
+        )
       ).subscribe({
         next: response => {
           this.listParcours = response;
@@ -64,16 +68,15 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   }
 
   getAllPoints(parcour : Parcour) : object {
-
     const coordinates: google.maps.LatLngLiteral[] = [];
     for (const polyline of parcour.allPoints) {
       coordinates.push({ lat: polyline.latitude, lng: polyline.longitude });
     }
     return {
       path : coordinates,
-      strokeColor: parcour.type == "Public" ? '#13bb00' : parcour.type == "Protected" ? '#dde20a' : '#e2180a' ,
+      strokeColor: parcour.type == "Public" ? '#13bb00' : parcour.type == "Protected" ? '#fff200' : '#e2180a' ,
       strokeOpacity: 2.0,
-      strokeWeight: 2.5,
+      strokeWeight: 3,
     }
   }
 
