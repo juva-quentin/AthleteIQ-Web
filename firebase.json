@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/athlete-iq-web",
+    "source": "*",
     "ignore": [
       "firebase.json",
       "**/.*",
