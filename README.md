@@ -36,6 +36,18 @@ npm install
 npm start
 ```
 
+# Deploiement
+1. Lancer un buil de l'application
+
+```bash
+npm run build
+```
+
+2. Déployer l'application
+
+```bash
+firebase deploy --only hosting      
+```
 L'application sera disponible à l'adresse [http://localhost:4200](http://localhost:4200). Assurez-vous que l'API de l'application mobile AthleteIQ est accessible et que les URL de l'API sont correctement configurées dans le code.
 
 ## Contact
