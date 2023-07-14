@@ -1,0 +1,55 @@
+app-user-profil-img {
+  height: 10rem;
+  justify-content: center;
+  margin: 2%;
+}
+.img-border {
+  height: 10rem;
+  width: 10rem;
+  border: 0.2rem solid white;
+  border-radius: 50%;
+}
+
+#mail {
+  text-decoration:none; color:white;
+  transition: all 0.1s;
+}
+
+#mail:hover{
+  color: rgb(240, 240, 240);
+  transition: all 0.1s
+}
+
+#edit-button {
+  text-align: center; 
+  padding: 0px;
+  width: 150px;
+  height: 25px;
+  transition: all 0.2s;
+  margin-right : 10px;
+  background-color: #bde0d5; 
+  color: white;
+  border-radius: 8px;
+}
+
+#edit-button:hover {
+  transition: all 0.2s;
+  background-color: #93cbb9;
+} 
+
+#logout-button {
+  text-align: center; 
+  padding: 0px;
+  width: 150px;
+  height: 25px;
+  margin-left : 10px;
+  transition: all 0.2s;
+  background-color:#F6A762; 
+  color:white;
+  border-radius: 8px;
+}
+
+#logout-button:hover {
+  transition: all 0.2s;
+  background-color: #f7923b; 
+}

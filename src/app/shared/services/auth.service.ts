@@ -113,4 +113,8 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut()
   }
+
+  updateEmail(email:string){
+    return this.afAuth.currentUser.then(user => user?.updateEmail(email))
+  }
 }

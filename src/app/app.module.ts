@@ -26,7 +26,14 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgOptimizedImage} from "@angular/common";
 import { ParcourListComponent } from './components/parcour-list/parcour-list.component';
-import {UserService} from "./shared/services/user.service";
+import {ProfileComponent} from "./components/profile/profile.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import {HotToastModule} from "@ngneat/hot-toast";
+import {UsersService} from "./shared/services/user/users.service";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -39,6 +46,7 @@ import {UserService} from "./shared/services/user.service";
     VerifyEmailComponent,
     SideBarComponent,
     ParcourListComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +60,14 @@ import {UserService} from "./shared/services/user.service";
     ReactiveFormsModule,
     NgOptimizedImage,
     FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    HotToastModule.forRoot(),
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UsersService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

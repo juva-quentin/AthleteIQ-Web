@@ -2,8 +2,7 @@ import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/c
 import {ParcoursService} from "../../shared/services/parcour.service";
 import {Parcour} from "../../shared/models/parcour";
 import {map, Observable, Subject, takeUntil} from "rxjs";
-import {UserService} from "../../shared/services/user.service";
-import {User} from "../../shared/models/user";
+import {UsersService} from "../../shared/services/user/users.service";
 
 @Component({
   selector: 'app-parcour-list',
@@ -15,7 +14,7 @@ export class ParcourListComponent implements OnInit, OnDestroy {
   listParcours: Parcour[] = []
   filteredParcours: Parcour[] = [];
   searchTerm: string = '';
-  constructor(private parcourService: ParcoursService, private userService: UserService) { }
+  constructor(private parcourService: ParcoursService, private userService: UsersService) { }
 
   ngOnInit(): void {
     this.getAllParcour()

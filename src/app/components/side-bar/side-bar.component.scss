@@ -32,6 +32,11 @@
     padding:0.5em 0;
     margin:0;
 
+    a {
+      text-decoration: none; /* Supprimer la décoration du lien */
+      color: inherit; /* Utiliser la couleur par défaut */
+    }
+
     li{
       padding:0.5em 1em 0.5em 3em;
       font-size:0.95em;
@@ -42,10 +47,7 @@
       transition:all 0.15s linear;
       cursor:pointer;
 
-      a {
-        text-decoration: none; /* Supprimer la décoration du lien */
-        color: inherit; /* Utiliser la couleur par défaut */
-      }
+
 
 
       &.icon-dashboard{

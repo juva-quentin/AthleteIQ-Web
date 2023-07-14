@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ParcoursService} from "../../shared/services/parcour.service";
 import {Parcour} from "../../shared/models/parcour";
-import {UserService} from "../../shared/services/user.service";
 import {MapInfoWindow, MapMarker} from "@angular/google-maps";
 import {LocationService} from "../../shared/services/location.service";
 import {filter, map, Subject, takeUntil} from "rxjs";
+import {UsersService} from "../../shared/services/user/users.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +26,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   listParcours: Parcour[] = []
 
   @ViewChildren(MapInfoWindow) infoWindowsView: QueryList<MapInfoWindow> | undefined;
-  constructor(public userService: UserService, private parcourService: ParcoursService, private locationService: LocationService) {}
+  constructor(public userService: UsersService, private parcourService: ParcoursService, private locationService: LocationService) {}
 
   ngOnDestroy(): void {
     this.unsubsribe.next()
